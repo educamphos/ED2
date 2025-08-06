@@ -55,6 +55,7 @@ int main(void) {
     int vetorAux1[tamc];
 
     copiaVetor(listaC, vetorAux1, tamc);
+    printf("teste");
     ordenarmentoBolha(vetorAux1, tamc);
     mostrarVetor(vetorAux1, tamc);
     //ordenarmentoBolha(vetorAux1, tamr);
