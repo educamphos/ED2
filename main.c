@@ -52,11 +52,11 @@ int main(void) {
     fclose(fc);
     fclose(fr);
 
-    int vetorAux1[tamr];
+    int vetorAux1[tamc];
 
-    copiaVetor(listaR, vetorAux1, tamr);
-    ordenarmentoBolha(vetorAux1, tamr);
-    mostrarVetor(vetorAux1, tamr);
+    copiaVetor(listaC, vetorAux1, tamc);
+    ordenarmentoBolha(vetorAux1, tamc);
+    mostrarVetor(vetorAux1, tamc);
     //ordenarmentoBolha(vetorAux1, tamr);
     //mostrarVetor(vetorAux1, tamr);
 
