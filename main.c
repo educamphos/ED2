@@ -1,69 +1,69 @@
 #include "bolha.h"
 #include "menu.h"
+#include "file.h"
 
 int main(void) {
     
-    //abre arquivos
+    // Abre arquivos
     FILE *fd = fopen("d", "r");
     FILE *fc = fopen("c", "r");
     FILE *fr = fopen("r", "r");
 
+    if (!fd || !fc || !fr) {
+        perror("Erro ao abrir arquivos");
+        return 1;
+    }
 
-    //pega o tamanho do vetor
-    int tamd=0, tamc=0, tamr=0;
-    int numero;
-    while (fscanf(fd, "%d", &numero) == 1) {
-        tamd++;
+    // Conta elementos
+    int tamd = contarElementos(fd);
+    int tamc = contarElementos(fc);
+    int tamr = contarElementos(fr);
+
+    // Verifica se todos têm dados
+    if (tamd <= 0 || tamc <= 0 || tamr <= 0) {
+        fprintf(stderr, "Erro: um dos arquivos está vazio ou inválido.\n");
+        fclose(fd);
+        fclose(fc);
+        fclose(fr);
+        return 1;
     }
-    while (fscanf(fc, "%d", &numero) == 1) {
-        tamc++;
-    }
-    while (fscanf(fr, "%d", &numero) == 1) {
-        tamr++;
-    }
-    
-    int *listaR = malloc(tamr * sizeof(int));
-    int *listaC = malloc(tamc * sizeof(int));
+
+    // Aloca vetores dinamicamente
     int *listaD = malloc(tamd * sizeof(int));
+    int *listaC = malloc(tamc * sizeof(int));
+    int *listaR = malloc(tamr * sizeof(int));
+ 
 
-
-    //reseta os ponteiros
-    fclose(fd);
-    fd = fopen("d", "r");
-
-    fclose(fc);
-    fc = fopen("c", "r");
-
-    fclose(fr);
-    fr = fopen("r", "r");
-
-    //le os arquivos
-    for(int i = 0; i < tamr; i++) {
-        fscanf(fr, "%d", &listaR[i]);
-    }
-    for(int i = 0; i < tamc; i++) {
-        fscanf(fc, "%d", &listaC[i]);
-    }
-    for(int i = 0; i < tamd; i++) {
-        fscanf(fd, "%d", &listaD[i]);
+    if (!listaD || !listaC || !listaR) {
+        perror("Erro ao alocar memória");
+        fclose(fd);
+        fclose(fc);
+        fclose(fr);
+        free(listaD);
+        free(listaC);
+        free(listaR);
+        return 1;
     }
 
-    fclose(fd);
-    fclose(fc);
-    fclose(fr);
+    // Lê dados para os vetores
+    for (int i = 0; i < tamd; i++) fscanf(fd, "%d", &listaD[i]);
+    for (int i = 0; i < tamc; i++) fscanf(fc, "%d", &listaC[i]);
+    for (int i = 0; i < tamr; i++) fscanf(fr, "%d", &listaR[i]);
 
-    int vetorAux1[tamc];
+    int *vetorAux1 = malloc(tamc * sizeof(int));
 
     copiaVetor(listaC, vetorAux1, tamc);
-    printf("teste");
+    printf("teste1");
     ordenarmentoBolha(vetorAux1, tamc);
     mostrarVetor(vetorAux1, tamc);
-    //ordenarmentoBolha(vetorAux1, tamr);
-    //mostrarVetor(vetorAux1, tamr);
 
-    //mostrarVetor(listaR, tamr);
-    //ordenarmentoBolha(listaR, tamr);
-    //mostrarVetor(listaR, tamr);
-
+    fclose(fd);
+    fclose(fc);
+    fclose(fr);
+    free(listaD);
+    free(listaC);
+    free(listaR);
+    free(vetorAux1);
+    
     return 0;
 }

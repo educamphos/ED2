@@ -7,7 +7,7 @@ void ordenarmentoBolha(int *vet, int tam) {
                 int aux = vet[j];
                 vet[j] = vet[j + 1];
                 vet[j + 1] = aux;
-                printf("Trocou %d e %d\n", vet[j], vet[j + 1]);
+                printf("Trocou %d e %d\n", j, j + 1);
             }
         }
     }

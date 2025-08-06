@@ -9,8 +9,10 @@ void mostrarVetor(int *vet, int tam) {
 
 void copiaVetor(int *origem, int *destino, int tam) {
     for (int i = 0; i < tam; i++) {
-        destino[i] = origem[i];
         printf("Copiou %d para destino indice:%d\n", origem[i], i);
+        destino[i] = origem[i];
+        printf("pass\n");
+        
     }
-    printf("testee2");
+    printf("\nfim");
 }
