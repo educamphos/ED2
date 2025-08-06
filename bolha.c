@@ -12,3 +12,4 @@ int* ordenarmentoBolha(int *vet, int tam) {
     }
     return vet;
 }
+
