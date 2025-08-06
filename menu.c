@@ -5,5 +5,10 @@ void mostrarVetor(int *vet, int tam) {
         printf("%d ", vet[i]);
         printf("\n");
     }
-    
+}
+
+void copiaVetor(int *origem, int *destino, int tam) {
+    for (int i = 0; i < tam; i++) {
+        destino[i] = origem[i];
+    }
 }

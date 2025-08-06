@@ -3,9 +3,13 @@
 
 int main(void) {
     
+    //abre arquivos
     FILE *fd = fopen("d", "r");
     FILE *fc = fopen("c", "r");
     FILE *fr = fopen("r", "r");
+
+
+    //pega o tamanho do vetor
     int tamd=0, tamc=0, tamr=0;
     int numero;
     while (fscanf(fd, "%d", &numero) == 1) {
@@ -22,6 +26,8 @@ int main(void) {
     int *listaC = malloc(tamc * sizeof(int));
     int *listaD = malloc(tamd * sizeof(int));
 
+
+    //reseta os ponteiros
     fclose(fd);
     fd = fopen("d", "r");
 
@@ -31,7 +37,7 @@ int main(void) {
     fclose(fr);
     fr = fopen("r", "r");
 
-
+    //le os arquivos
     for(int i = 0; i < tamr; i++) {
         fscanf(fr, "%d", &listaR[i]);
     }
@@ -46,9 +52,17 @@ int main(void) {
     fclose(fc);
     fclose(fr);
 
+    int vetorAux1[tamr];
+
+    copiaVetor(listaR, vetorAux1, tamr);
+    ordenarmentoBolha(vetorAux1, tamr);
+    mostrarVetor(vetorAux1, tamr);
+    //ordenarmentoBolha(vetorAux1, tamr);
+    //mostrarVetor(vetorAux1, tamr);
+
     //mostrarVetor(listaR, tamr);
-    ordenarmentoBolha(listaR, tamr);
-    mostrarVetor(listaR, tamr);
+    //ordenarmentoBolha(listaR, tamr);
+    //mostrarVetor(listaR, tamr);
 
     return 0;
 }
