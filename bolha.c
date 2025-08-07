@@ -9,6 +9,7 @@ void ordenarmentoBolha(int *vet, int tam) {
                 vet[j + 1] = aux;
                 trocas++;
             }
+            comparacoes++;
         }
     }
 }
@@ -27,6 +28,7 @@ void ordenamentoBolhaCriterioParada(int *vet, int n) {
                 trocas++;
                 //printf("Trocas: %d\n", trocas);
             }
+            comparacoes++;
         }
 
         // Se nenhuma troca aconteceu, o vetor já está ordenado
