@@ -2,8 +2,11 @@
 #include "menu.h"
 #include "file.h"
 
+
+
 int main(void) {
     
+
     // Abre arquivos
     FILE *fd = fopen("d", "r");
     FILE *fc = fopen("c", "r");
@@ -50,20 +53,17 @@ int main(void) {
     for (int i = 0; i < tamc; i++) fscanf(fc, "%d", &listaC[i]);
     for (int i = 0; i < tamr; i++) fscanf(fr, "%d", &listaR[i]);
 
-    int *vetorAux1 = malloc(tamc * sizeof(int));
+    
+    int *vetorAux1 = listaR;
+    int tam = tamr;
+    int *vetorAux2 = malloc(tam * sizeof(int));
 
-    copiaVetor(listaC, vetorAux1, tamc);
-    printf("teste1");
-    ordenarmentoBolha(vetorAux1, tamc);
-    mostrarVetor(vetorAux1, tamc);
 
-    fclose(fd);
-    fclose(fc);
-    fclose(fr);
-    free(listaD);
-    free(listaC);
-    free(listaR);
-    free(vetorAux1);
+    copiaVetor(vetorAux1, vetorAux2, tam);
+    printf("copiado\n");
+    ordenamentoBolhaCriterioParada(vetorAux2, tam);
+    printf("trocas: %" PRIu64 "\n", trocas);
+    //mostrarVetor(vetorAux2, tam);
     
     return 0;
 }

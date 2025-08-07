@@ -7,7 +7,7 @@ void ordenarmentoBolha(int *vet, int tam) {
                 int aux = vet[j];
                 vet[j] = vet[j + 1];
                 vet[j + 1] = aux;
-                printf("Trocou %d e %d\n", j, j + 1);
+                trocas++;
             }
         }
     }
@@ -18,14 +18,14 @@ void ordenamentoBolhaCriterioParada(int *vet, int n) {
 
     for (int i = 0; i < n - 1; i++) {
         trocou = false;
-
         for (int j = 0; j < n - 1 - i; j++) {
             if (vet[j] > vet[j + 1]) {
                 int temp = vet[j];
                 vet[j] = vet[j + 1];
                 vet[j + 1] = temp;
                 trocou = true;
-                printf("Trocou %d e %d\n", vet[j], vet[j + 1]);
+                trocas++;
+                //printf("Trocas: %d\n", trocas);
             }
         }
 
