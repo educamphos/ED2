@@ -13,6 +13,6 @@ void insercaoDireta(int *v, int n) {
 
         // Insere a chave na posição correta
         v[j + 1] = chave;
-        //teste
+        //test
     }
 }
